@@ -30,6 +30,10 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    if (!admin) {
+      return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
+    }
+
     const match = await bcrypt.compare(password, admin.password);
     if (!match) {
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });

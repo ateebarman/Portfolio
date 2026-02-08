@@ -15,7 +15,7 @@ export async function GET() {
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
     });
-  } catch (err) {
+  } catch (err: unknown) {
     console.error('Resume download error:', err);
     return NextResponse.json({ error: 'Resume not found' }, { status: 404 });
   }

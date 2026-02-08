@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
     if (!token || !jwtSecret) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     try {
-      jwt.verify(token, jwtSecret);
+      jwt.verify(token, jwtSecret as string);
     } catch (e) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
     const messages = await collection.find().sort({ date: -1 }).toArray();
 
     return NextResponse.json({ messages });
-  } catch (err) {
+  } catch (err: unknown) {
     console.error('Fetch messages error:', err);
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
