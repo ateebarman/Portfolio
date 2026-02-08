@@ -87,10 +87,10 @@ export function Contact() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Let's Connect</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Let&apos;s Connect</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto" />
           <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            I'm always interested in hearing about new projects, opportunities, and interesting problems.
+            I&apos;m always interested in hearing about new projects, opportunities, and interesting problems.
             Feel free to reach out!
           </p>
         </motion.div>

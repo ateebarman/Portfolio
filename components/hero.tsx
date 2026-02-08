@@ -33,7 +33,7 @@ export function Hero() {
             transition={{ delay: 0.3 }}
             className="text-5xl md:text-7xl font-bold leading-tight"
           >
-            Hey, I'm <span className="gradient-text">Ateeb Arman</span>
+            Hey, I&apos;m <span className="gradient-text">Ateeb Arman</span>
           </motion.h1>
 
           <motion.p
@@ -101,7 +101,7 @@ export function Hero() {
               }
               className="px-8 py-3 rounded-lg text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold transition-all"
             >
-              Let's Talk
+              Let&apos;s Talk
             </button>
           </motion.div>
         </motion.div>
