@@ -17,8 +17,8 @@ const projects = [
       'AI Tutor Chat with streaming support using Groq Cloud',
     ],
     focus: ['AI Integration', 'Real-time Processing', 'Scalability'],
-    github: 'https://github.com/ateebarman/LearnSphereAI',
-    demo: '#',
+    github: 'https://github.com/ateebarman/LearnSphere-AI',
+    demo: 'https://learn-sphere-ai-36no.vercel.app/',
     icon: '🚀',
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     ],
     focus: ['Performance', 'Scalability', 'Real-time Processing'],
     github: 'https://github.com/ateebarman/RecoSense',
-    demo: 'https://recosense.onrender.com/',
+    demo: 'https://reco-sense.vercel.app/',
     icon: '🎯',
   },
   {
