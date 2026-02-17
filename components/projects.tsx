@@ -49,8 +49,8 @@ const projects = [
       'Documented API endpoints using Swagger UI',
     ],
     focus: ['Security', 'Performance', 'Scalability'],
-    github: 'https://github.com',
-    demo: '#',
+    github: 'https://github.com/ateebarman/DriveSphere',
+    demo: 'https://drive-sphere.vercel.app/',
     icon: '🚗',
   },
   {
