@@ -12,7 +12,7 @@ export async function GET() {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': 'attachment; filename="Ateeb_Arman_Resume.pdf"',
-        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
       },
     });
   } catch (err: unknown) {
