@@ -5,14 +5,32 @@ import { Github, ExternalLink, Zap, Cpu, Network } from 'lucide-react';
 
 const projects = [
   {
+    title: 'LearnSphere AI',
+    description: 'Next-generation learning platform leveraging Gemini and Groq AI to generate personalized roadmaps, RAG-driven curriculum from PDFs, and a gamified Skill Tree.',
+    tech: ['React 18', 'Node.js', 'Express', 'MongoDB', 'Gemini 2.0', 'Groq (Llama-3)', 'Monaco Editor', 'Judge0'],
+    highlights: [
+      'Personalized AI Roadmap Generation via Gemini 1.5',
+      'RAG-Enabled Roadmaps for PDF-to-Curriculum generation',
+      'Integrated Coding Arena with real-time compilation via Judge0',
+      'Dynamic AI Quiz Assessment System based on learning modules',
+      'Gamified Learning Analytics with a dynamic Skill Tree',
+      'AI Tutor Chat with streaming support using Groq Cloud',
+    ],
+    focus: ['AI Integration', 'Real-time Processing', 'Scalability'],
+    github: 'https://github.com/ateebarman/LearnSphereAI',
+    demo: '#',
+    icon: '🚀',
+  },
+  {
     title: 'RecoSense',
-    description: 'Intelligent recommendation engine powered by real-time review signals and user interaction data. Implemented counter-based trigger mechanism for automatic model retraining based on interaction thresholds.',
+    description: 'Architected a hybrid recommendation engine combining review-level signals and user interaction data to generate personalized top-N recommendations.',
     tech: ['Node.js', 'Express.js', 'MongoDB', 'Python (LightFM)', 'React'],
     highlights: [
-      'Real-time data ingestion pipeline',
-      'Counter-based trigger mechanism for model freshness',
-      'LightFM fallback for cold-start scenarios',
-      'Admin dashboard for system monitoring',
+      'Architected a hybrid recommendation engine with review-level signals',
+      'Engineered high-performance pipeline with Node.js inference',
+      'Python LightFM fallback for cold-start scenarios',
+      'Counter-based trigger mechanism for automatic model retraining',
+      'Built admin dashboard to monitor system health and inspect logs',
     ],
     focus: ['Performance', 'Scalability', 'Real-time Processing'],
     github: 'https://github.com/ateebarman/RecoSense',
@@ -21,14 +39,14 @@ const projects = [
   },
   {
     title: 'DriveSphere',
-    description: 'Scalable car rental platform with role-based access control (RBAC) for multi-tenant operations. Optimized database queries with Redis caching for frequently accessed vehicle inventory data.',
-    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Redis', 'Multer'],
+    description: 'Developed a scalable car rental platform featuring Role-Based Access Control (RBAC) for admins and users, securing routes via JWT authentication.',
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Redis', 'Multer', 'Swagger UI'],
     highlights: [
-      'Role-Based Access Control (RBAC) system',
-      'Redis caching for inventory optimization',
-      'RESTful APIs with MVC architecture',
-      'Secure image uploads with Multer',
-      'Swagger UI API documentation',
+      'Role-Based Access Control (RBAC) for admins and users',
+      'Optimized database performance using Redis caching',
+      'Designed RESTful APIs adhering to MVC architecture',
+      'Integrated Multer for secure image uploads and storage',
+      'Documented API endpoints using Swagger UI',
     ],
     focus: ['Security', 'Performance', 'Scalability'],
     github: 'https://github.com',
@@ -37,14 +55,14 @@ const projects = [
   },
   {
     title: 'WaveConnect',
-    description: 'Real-time communication platform supporting 1-on-1 and group video calls with Socket.io SDK integration. Implemented PushStack Query with Zustand for efficient global state management and handling optimistic UI updates.',
-    tech: ['React.js', 'Node.js', 'Socket.io', 'Stream SDK', 'Zustand', 'WebRTC'],
+    description: 'Built a real-time communication platform supporting 1-on-1 and group video calls using Stream.io SDK and WebRTC protocols.',
+    tech: ['React.js', 'Node.js', 'MongoDB', 'Stream.io SDK', 'Socket.io', 'TanStack Query', 'Zustand', 'WebRTC'],
     highlights: [
-      'Real-time video call infrastructure (1-on-1 & group)',
-      'Friend request system with user presence (typing indicators)',
-      'PushStack Query pattern for state consistency',
-      'Zustand for global state management',
-      'Production-grade WebRTC implementation',
+      'Real-time communication for 1-on-1 and group video calls',
+      'Integrated Stream.io SDK and WebRTC protocols',
+      'Used TanStack Query and Zustand for global state management',
+      'Robust backend logic for friend requests and user presence',
+      'Implemented real-time notifications and typing indicators',
     ],
     focus: ['Real-time Systems', 'Scalability', 'UX/Performance'],
     github: 'https://github.com/ateebarman/RealtimeChat',
@@ -70,7 +88,7 @@ const item = {
 
 export function Projects() {
   return (
-    <section id="projects" className="py-20 bg-slate-50 dark:bg-slate-900/50">
+    <section id="projects" className="py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -142,6 +160,7 @@ export function Projects() {
                         'Real-time Systems': <Cpu size={16} />,
                         'Scalability': <Zap size={16} />,
                         'UX/Performance': <Zap size={16} />,
+                        'AI Integration': <Cpu size={16} />,
                       };
                       return (
                         <span

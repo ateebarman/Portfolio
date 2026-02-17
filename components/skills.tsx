@@ -9,8 +9,8 @@ const skillCategories = [
     color: 'from-red-500 to-orange-500',
   },
   {
-    title: 'Core CS',
-    skills: ['Data Structures', 'Algorithms', 'DBMS', 'Operating Systems', 'Computer Networks', 'OOPs'],
+    title: 'Core Subjects',
+    skills: ['Data Structures & Algorithms', 'DBMS', 'Operating Systems', 'OOPs', 'Computer Networks'],
     color: 'from-blue-500 to-cyan-500',
   },
   {
@@ -24,13 +24,13 @@ const skillCategories = [
     color: 'from-green-500 to-emerald-500',
   },
   {
-    title: 'Tools & DevOps',
-    skills: ['Git', 'GitHub', 'Postman', 'Linux', 'Docker', 'AWS'],
+    title: 'Tools',
+    skills: ['Git', 'GitHub', 'Postman', 'Linux'],
     color: 'from-yellow-500 to-orange-500',
   },
   {
     title: 'Security & Architecture',
-    skills: ['JWT', 'CORS', 'RESTful APIs', 'MVC Pattern', 'Role-Based Access Control'],
+    skills: ['JWT', 'CORS', 'RESTful Architecture', 'MVC Pattern', 'RBAC'],
     color: 'from-indigo-500 to-purple-500',
   },
 ];

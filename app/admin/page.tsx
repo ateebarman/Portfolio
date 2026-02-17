@@ -11,12 +11,17 @@ export default function AdminPage() {
 
   const fetchMessages = async () => {
     setLoading(true);
-    const res = await fetch('/api/admin/messages', { credentials: 'include' });
-    if (res.ok) {
-      const data = await res.json();
-      setMessages(data.messages || []);
-      setLoggedIn(true);
-    } else {
+    try {
+      const res = await fetch('/api/admin/messages', { credentials: 'include' });
+      if (res.ok) {
+        const data = await res.json();
+        setMessages(data.messages || []);
+        setLoggedIn(true);
+      } else {
+        setLoggedIn(false);
+      }
+    } catch (error) {
+      console.error('Error fetching messages:', error);
       setLoggedIn(false);
     }
     setLoading(false);

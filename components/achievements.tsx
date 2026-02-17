@@ -5,24 +5,24 @@ import { Trophy, Users, Code } from 'lucide-react';
 
 const achievements = [
   {
-    title: 'DSA Mastery',
-    description: '600+ problems solved across competitive programming platforms',
+    title: 'Data Structures & Algorithms',
+    description: 'Solved 600+ problems across LeetCode, GeeksforGeeks, and Code360',
     icon: Code,
     stat: '600+',
     color: 'from-blue-500 to-cyan-500',
   },
   {
-    title: 'Coding Excellence',
-    description: 'Secured Rank 1 in College CodeChef Monthly leaderboard',
+    title: 'College Rank 1',
+    description: 'Secured first position 6 times in the monthly college Code360 coding leaderboard',
     icon: Trophy,
-    stat: 'Top 1',
+    stat: '6x Rank 1',
     color: 'from-yellow-500 to-orange-500',
   },
   {
     title: 'Leadership',
-    description: 'Co-Lead in Hospitality, managed 200+ guests at Abhisarga fest',
+    description: 'Served as Co-Lead for Hospitality at Abhisarga (College Fest), managing logistics for 200+ guests',
     icon: Users,
-    stat: '200+',
+    stat: '200+ Guests',
     color: 'from-purple-500 to-pink-500',
   },
 ];
@@ -108,10 +108,10 @@ export function Achievements() {
           <h3 className="text-2xl font-bold mb-6">Recognition & Highlights</h3>
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              'Participated in 15+ competitive programming matches at Spectra (IIIT Sri City Sports Fest)',
-              'Secured 2 championships in inter-season competitions',
-              'Mentored junior developers in system design and backend architecture',
-              'Active contributor to college technical societies',
+              'Competed in three seasons of Spectra (IIIT Sri City sports fest), participating in 15+ matches',
+              'Secured two championships in inter-season competitions at Spectra',
+              'Coordinated a team of 15+ volunteers for Abhisarga hospitality',
+              'Managed guest accommodations and logistics for 200+ festival attendees',
             ].map((highlight, idx) => (
               <motion.div
                 key={idx}
