@@ -86,22 +86,32 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
+// Optimization: Use spring transitions for smoother feel and GPU-accelerated properties
+const springTransition = { type: 'spring', stiffness: 400, damping: 30 };
+
 export function Projects() {
   return (
-    <section id="projects" className="py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 relative overflow-hidden bg-white dark:bg-[#060606]">
+      {/* Optimized Background - Static gradients */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className="absolute top-0 right-10 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(59,130,246,0.08)_0%,transparent_70%)]" />
+        <div className="absolute bottom-0 left-10 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(139,92,246,0.08)_0%,transparent_70%)]" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
-          <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl">
-            Production-grade applications showcasing backend architecture, real-time systems, and scalable design patterns.
-          </p>
+          <p className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-[0.3em] text-[10px] mb-3">Engineering Showcase</p>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter text-slate-900 dark:text-white leading-tight">
+            FEATURED <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 animate-gradient">SYSTEMS</span>
+          </h2>
+          <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 rounded-full mx-auto" />
         </motion.div>
 
         <motion.div
@@ -109,39 +119,49 @@ export function Projects() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="space-y-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
         >
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
               variants={item}
-              className="group relative rounded-xl overflow-hidden bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-2xl transition-all duration-300"
+              whileHover={{ y: -5 }}
+              className="advanced-card group rounded-[1.5rem] p-0.5 transition-all duration-300"
+              style={{ willChange: 'transform' }}
             >
-              {/* Gradient overlay on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 bg-gradient-to-r from-blue-600 to-purple-600 transition-opacity duration-300" />
+              <div className="relative h-full bg-white dark:bg-slate-950 rounded-[1.4rem] p-8 flex flex-col">
+                <span className="absolute top-8 right-8 text-4xl font-black opacity-[0.03] dark:opacity-[0.05] group-hover:opacity-10 transition-opacity">
+                  0{idx + 1}
+                </span>
 
-              <div className="p-8 relative z-10">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-4xl">{project.icon}</span>
-                    <h3 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+                <div className="flex items-start gap-5 mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-3xl shadow-inner border border-slate-200 dark:border-slate-800 transition-colors duration-300">
+                    {project.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight leading-none group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {project.title}
                     </h3>
+                    <div className="flex gap-2 mt-3">
+                      {project.focus.map((f, i) => (
+                        <span key={i} className="text-[9px] uppercase font-black tracking-widest text-slate-400 bg-slate-100 dark:bg-slate-900 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-800">
+                          {f}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <p className="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                <p className="text-slate-500 dark:text-slate-400 mb-6 leading-relaxed text-sm font-medium">
                   {project.description}
                 </p>
 
-                {/* Tech Stack */}
                 <div className="mb-6">
-                  <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Tech Stack</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, techIdx) => (
                       <span
                         key={techIdx}
-                        className="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-medium"
+                        className="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-[10px] font-bold border border-slate-200 dark:border-slate-800"
                       >
                         {tech}
                       </span>
@@ -149,60 +169,40 @@ export function Projects() {
                   </div>
                 </div>
 
-                {/* Focus Areas */}
-                <div className="mb-6">
-                  <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Architecture Focus</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.focus.map((area, areaIdx) => {
-                      const icons: { [key: string]: React.ReactNode } = {
-                        'Performance': <Zap size={16} />,
-                        'Security': <Network size={16} />,
-                        'Real-time Systems': <Cpu size={16} />,
-                        'Scalability': <Zap size={16} />,
-                        'UX/Performance': <Zap size={16} />,
-                        'AI Integration': <Cpu size={16} />,
-                      };
-                      return (
-                        <span
-                          key={areaIdx}
-                          className="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-medium flex items-center gap-1"
-                        >
-                          {icons[area]} {area}
-                        </span>
-                      );
-                    })}
-                  </div>
+                <div className="space-y-3 mb-10 flex-grow">
+                  {project.highlights.slice(0, 3).map((highlight, hIdx) => (
+                    <div key={hIdx} className="flex items-start gap-3">
+                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                      <p className="text-xs text-slate-600 dark:text-slate-400 leading-snug font-bold">
+                        {highlight}
+                      </p>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Highlights */}
-                <div className="mb-8 pl-4 border-l-2 border-slate-300 dark:border-slate-600">
-                  <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Key Highlights</p>
-                  <ul className="space-y-2">
-                    {project.highlights.map((highlight, hIdx) => (
-                      <li key={hIdx} className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
-                        <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* CTA Buttons */}
-                <div className="flex gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
-                  <a
+                <div className="flex gap-3 pt-4 border-t border-slate-100 dark:border-slate-900 mt-auto">
+                  <motion.a
                     href={project.github}
-                    className="flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 font-semibold transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold uppercase tracking-widest text-[10px]"
                   >
-                    <Github size={18} />
-                    GitHub
-                  </a>
-                  <a
+                    <Github size={16} />
+                    Source
+                  </motion.a>
+                  <motion.a
                     href={project.demo}
-                    className="flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-700 font-semibold transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold uppercase tracking-widest text-[10px] hover:border-blue-600 transition-all font-mono"
                   >
-                    <ExternalLink size={18} />
+                    <ExternalLink size={16} />
                     Live Demo
-                  </a>
+                  </motion.a>
                 </div>
               </div>
             </motion.div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Code, Phone } from 'lucide-react';
+import { Mail, Linkedin, Github, Code, Phone, Send, MapPin, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 
 const contactLinks = [
@@ -42,6 +42,21 @@ const contactLinks = [
   },
 ];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, x: -20 },
+  show: { opacity: 1, x: 0 },
+};
+
 export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -71,138 +86,154 @@ export function Contact() {
       setFormData({ name: '', email: '', message: '' });
     } catch (err) {
       console.error('Failed to send contact message', err);
-      alert('Failed to send message. Please try again later.');
     } finally {
-      setSubmitted(false);
+      setTimeout(() => setSubmitted(false), 3000);
     }
   };
 
   return (
-    <section id="contact" className="py-20 bg-slate-50 dark:bg-slate-900/50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 relative overflow-hidden bg-white dark:bg-[#060606]">
+      {/* Optimized Background Blobs */}
+      <div className="absolute inset-0 opacity-40 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(59,130,246,0.06)_0%,transparent_70%)]" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(139,92,246,0.04)_0%,transparent_70%)]" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Let&apos;s Connect</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto" />
-          <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            I&apos;m always interested in hearing about new projects, opportunities, and interesting problems.
-            Feel free to reach out!
-          </p>
+          <p className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-[0.3em] text-[10px] mb-3">Transmission</p>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter text-slate-900 dark:text-white leading-tight">
+            GET IN <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 animate-gradient">TOUCH</span>
+          </h2>
+          <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 rounded-full mx-auto" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
-          {/* Contact Information */}
+        <div className="grid lg:grid-cols-12 gap-10 items-start">
+          {/* Contact Information Cards */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            variants={container}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
-            className="space-y-4"
+            className="lg:col-span-5 space-y-6"
           >
-            {contactLinks.map((link, idx) => {
-              const Icon = link.icon;
-              return (
-                <motion.a
-                  key={idx}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  className="group flex items-center gap-4 p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-all"
-                >
-                  <div className={`p-3 rounded-lg bg-gradient-to-r ${link.color} text-white`}>
-                    <Icon size={24} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-slate-500 dark:text-slate-500">{link.label}</p>
-                    <p className="text-slate-900 dark:text-slate-100 font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      {link.value}
-                    </p>
-                  </div>
-                </motion.a>
-              );
-            })}
+            <div className="advanced-card p-10 rounded-[2.5rem]">
+              <h3 className="text-xl font-black text-slate-900 dark:text-white mb-8 tracking-tight uppercase">Channel Access</h3>
+              <div className="space-y-6">
+                {contactLinks.map((link, idx) => {
+                  const Icon = link.icon;
+                  return (
+                    <motion.a
+                      key={idx}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variants={item}
+                      className="group flex items-center gap-4"
+                    >
+                      <div className={`p-4 rounded-2xl bg-gradient-to-br ${link.color} text-white shadow-xl group-hover:scale-105 transition-transform duration-300`}>
+                        <Icon size={20} />
+                      </div>
+                      <div>
+                        <p className="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 group-hover:text-blue-500 transition-colors mb-0.5">{link.label}</p>
+                        <p className="text-slate-900 dark:text-white font-black text-base tracking-tight leading-none">
+                          {link.value}
+                        </p>
+                      </div>
+                    </motion.a>
+                  );
+                })}
+              </div>
+            </div>
           </motion.div>
 
-          {/* Contact Form */}
-          <motion.form
+          {/* Premium Contact Form */}
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            onSubmit={handleSubmit}
-            className="space-y-4"
+            className="lg:col-span-7"
           >
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-slate-900 dark:text-slate-100 mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 transition-colors"
-                placeholder="Your name"
-              />
-            </div>
+            <div className="advanced-card p-0.5 rounded-[2.5rem]">
+              <form onSubmit={handleSubmit} className="bg-white dark:bg-slate-950 p-10 md:p-12 rounded-[2.4rem] space-y-8 relative z-10">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label htmlFor="name" className="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 ml-4">
+                      Identifier
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Jane Doe"
+                      className="w-full px-6 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all font-bold text-sm text-slate-900 dark:text-white placeholder:text-slate-400"
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <label htmlFor="email" className="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 ml-4">
+                      Electronic Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="jane@example.com"
+                      className="w-full px-6 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all font-bold text-sm text-slate-900 dark:text-white placeholder:text-slate-400"
+                    />
+                  </div>
+                </div>
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-900 dark:text-slate-100 mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 transition-colors"
-                placeholder="your.email@example.com"
-              />
-            </div>
+                <div className="space-y-3">
+                  <label htmlFor="message" className="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 ml-4">
+                    The Payload
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    placeholder="Tell me about your vision..."
+                    className="w-full px-6 py-4 rounded-[1.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all font-bold text-sm text-slate-900 dark:text-white placeholder:text-slate-400 resize-none"
+                  />
+                </div>
 
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-slate-900 dark:text-slate-100 mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 transition-colors resize-none"
-                placeholder="Tell me about your project or opportunity..."
-              />
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  disabled={submitted}
+                  className={`w-full py-5 rounded-[1.5rem] font-black uppercase tracking-[0.3em] text-[10px] shadow-xl transition-all flex items-center justify-center gap-3 ${submitted
+                    ? 'bg-green-500 text-white'
+                    : 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:shadow-blue-500/20'
+                    }`}
+                >
+                  {submitted ? (
+                    '✓ Transmitted'
+                  ) : (
+                    <>
+                      Transmit Message <Send size={16} />
+                    </>
+                  )}
+                </motion.button>
+              </form>
             </div>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              type="submit"
-              disabled={submitted}
-              className={`w-full py-3 rounded-lg font-semibold transition-all ${
-                submitted
-                  ? 'bg-green-500 text-white'
-                  : 'bg-blue-600 hover:bg-blue-700 text-white'
-              }`}
-            >
-              {submitted ? '✓ Message Sent!' : 'Send Message'}
-            </motion.button>
-          </motion.form>
+          </motion.div>
         </div>
       </div>
     </section>
