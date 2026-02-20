@@ -136,16 +136,19 @@ export function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       variants={item}
-                      className="group flex items-center gap-4"
+                      className="group flex items-center gap-5 p-4 rounded-3xl transition-all duration-300 hover:bg-slate-50 dark:hover:bg-white/5 relative z-10"
                     >
-                      <div className={`p-4 rounded-2xl bg-gradient-to-br ${link.color} text-white shadow-xl group-hover:scale-105 transition-transform duration-300`}>
-                        <Icon size={20} />
+                      <div className={`p-4 rounded-2xl bg-gradient-to-br ${link.color} text-white shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 relative z-20`}>
+                        <Icon size={22} />
                       </div>
-                      <div>
-                        <p className="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 group-hover:text-blue-500 transition-colors mb-0.5">{link.label}</p>
-                        <p className="text-slate-900 dark:text-white font-black text-base tracking-tight leading-none">
+                      <div className="flex-1">
+                        <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 group-hover:text-blue-500 transition-colors mb-1">{link.label}</p>
+                        <p className="text-slate-900 dark:text-white font-black text-lg tracking-tight leading-none break-all">
                           {link.value}
                         </p>
+                      </div>
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-slate-300 dark:text-slate-700">
+                        <ExternalLink size={18} />
                       </div>
                     </motion.a>
                   );
