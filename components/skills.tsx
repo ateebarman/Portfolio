@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const skillCategories = [
   {
     title: 'Languages',
-    skills: ['C++', 'Python', 'JavaScript', 'TypeScript'],
+    skills: ['C++', 'Java', 'Python', 'JavaScript', 'TypeScript', 'SQL', 'C'],
     color: 'from-red-500 to-orange-500',
   },
   {
@@ -15,22 +15,22 @@ const skillCategories = [
   },
   {
     title: 'Web Frameworks',
-    skills: ['React.js', 'Node.js', 'Express.js', 'TailwindCSS'],
+    skills: ['React.js', 'Next.js', 'Node.js', 'Express.js', 'Spring Boot', 'FastAPI', 'Django', 'TailwindCSS'],
     color: 'from-purple-500 to-pink-500',
   },
   {
     title: 'Databases',
-    skills: ['MySQL', 'MongoDB', 'Redis'],
+    skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis'],
     color: 'from-green-500 to-emerald-500',
   },
   {
     title: 'Tools',
-    skills: ['Git', 'GitHub', 'Postman', 'Linux'],
+    skills: ['Git', 'GitHub', 'Docker', 'Postman', 'Linux', 'VS Code'],
     color: 'from-yellow-500 to-orange-500',
   },
   {
     title: 'Security & Architecture',
-    skills: ['JWT', 'CORS', 'RESTful Architecture', 'MVC Pattern', 'RBAC'],
+    skills: ['JWT', 'OAuth2', 'CORS', 'RESTful APIs', 'MVC Pattern', 'RBAC', 'Microservices'],
     color: 'from-indigo-500 to-purple-500',
   },
 ];

@@ -5,6 +5,20 @@ import { Users, Heart } from 'lucide-react';
 
 const experiences = [
   {
+    title: 'SDE Intern',
+    organization: 'TechTok4U',
+    period: 'Jan 2025 - Mar 2025',
+    description: 'Built and improved backend services for a growing product platform, focusing on clean API design, scalable logic, and reliable application workflows.',
+    achievements: [
+      'Developed and maintained backend features using Node.js and Express.js',
+      'Improved API reliability through structured error handling and validation',
+      'Worked on modular service logic to support product growth and maintainability',
+      'Collaborated with the team to optimize performance and backend workflows',
+    ],
+    icon: Heart,
+    color: 'from-blue-500 to-cyan-500',
+  },
+  {
     title: 'Co-Lead, Hospitality',
     organization: 'Abhisarga (College Fest)',
     period: '2024 - 2025',

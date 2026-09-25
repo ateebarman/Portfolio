@@ -163,7 +163,7 @@ export function About() {
               className="p-8 rounded-[2rem] border-2 border-dashed border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center space-y-2 opacity-60"
             >
               <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.4em]">Status</p>
-              <p className="text-slate-900 dark:text-white font-black text-xl tracking-tighter uppercase">SDE Intern hunting 🎯</p>
+              <p className="text-slate-900 dark:text-white font-black text-xl tracking-tighter uppercase">Open to SDE Intern / Full-Time roles 🎯</p>
             </motion.div>
           </motion.div>
         </div>
